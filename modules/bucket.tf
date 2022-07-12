@@ -1,9 +1,14 @@
 resource "aws_s3_bucket" "my_site_bucket" {
   bucket = var.domainName
-  aws_s3_bucket_acl    = "private"
   tags = {
     Environment        = var.SiteTags
   }
+}
+
+
+resource "aws_s3_bucket_acl" "example_bucket_acl" {
+  bucket = aws_s3_bucket.my_site_bucket.id
+  acl    = "private"
 }
 
 resource "aws_s3_bucket_public_access_block" "example" {
