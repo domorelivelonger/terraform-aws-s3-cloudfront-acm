@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "my_site_bucket" {
   bucket = var.domainName
-  acl    = "private"
+  aws_s3_bucket_acl    = "private"
   tags = {
     Environment        = var.SiteTags
   }
